@@ -95,7 +95,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;2019&#x2F;10&#x2F;29&#x2F;%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98&#x2F;cache7.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;2019&#x2F;10&#x2F;29&#x2F;%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98&#x2F;cache8.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;2019&#x2F;10&#x2F;29&#x2F;%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98&#x2F;cache9.png">
-<meta property="og:updated_time" content="2019-10-30T08:28:29.135Z">
+<meta property="og:updated_time" content="2019-10-31T04:16:40.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;2019&#x2F;10&#x2F;29&#x2F;%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98&#x2F;cache1.png">
 
@@ -392,11 +392,11 @@
 
 <p>浏览器会携带保存的Last-Modified和Etag分别作为If-Modified-Since和If-None-Match放入请求头中携带过去，以此到服务端验证此次请求的资源是否过期或更新；服务端进行判断，若过期或更新，则返回新的资源，否则返回空即可，节省服务端消耗。</p>
 <p><strong>强缓存</strong>：不会向服务器发送请求，直接从缓存中读取资源，在chrome控制台的network选项中可以看到该请求返回200的状态码;<br><strong>协商缓存</strong>：向服务器发送请求，服务器会根据这个请求的request header的一些参数来判断是否命中协商缓存，如果命中，则返回304状态码并带上新的response header通知浏览器从缓存中读取资源；<br>两者的共同点是，都是从客户端缓存中读取资源；区别是强缓存不会发请求，协商缓存会发请求</p>
-<h3 id="那么如何不再缓存资源"><a href="#那么如何不再缓存资源" class="headerlink" title="那么如何不再缓存资源"></a>那么如何不再缓存资源</h3><figure class="highlight plain"><figcaption><span>设置html的meta标签(此方法对js与css无效果)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="那么如何不再缓存资源"><a href="#那么如何不再缓存资源" class="headerlink" title="那么如何不再缓存资源"></a>那么如何不再缓存资源</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置html的meta标签(此方法对js与css无效果)</span></span><br><span class="line">&lt;meta http-equiv=<span class="string">"expires"</span> content=<span class="string">"0"</span>&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"pragma"</span> content=<span class="string">"no-cache"</span>&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"cache-control"</span> content=<span class="string">"no-cache"</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><figcaption><span>插入时间戳，使每次请求的参数不同</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var getTimestamp = new Date().getTime();</span><br><span class="line">&lt;img src=&quot;1.png?t=&apos; + getTimestamp&apos;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 插入时间戳，使每次请求的参数不同</span></span><br><span class="line"><span class="keyword">var</span> getTimestamp = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">&lt;img src=<span class="string">"1.png?t=' + getTimestamp'"</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><figcaption><span>与时间戳方法同理，也可以插入随机数</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;1.png?&apos; + Math.random()&apos;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 与时间戳方法同理，也可以插入随机数</span></span><br><span class="line">&lt;img src=<span class="string">"1.png?' + Math.random()'"</span>&gt;</span><br></pre></td></tr></table></figure>
 
 
 <figure class="highlight plain"><figcaption><span>webpack配置缓存 webpack.config.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line"> entry: &quot;main.js&quot;,</span><br><span class="line"> output: &#123;</span><br><span class="line"> path: &quot;/build&quot;,</span><br><span class="line"> filename: &quot;main.[hash].js&quot;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -519,7 +519,7 @@
               
                 <a href="/zlpBlog/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
