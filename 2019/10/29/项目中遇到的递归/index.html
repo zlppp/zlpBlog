@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="热爱生活，不断学习">
+<meta name="description" content="1. 输出josn树形结构数组 根据一维数组中的parentId，输出josn树形结构数组  12345678910let list = [  &amp;#123; id: 1, name: &quot;办公管理&quot;, pid: 0 &amp;#125;,  &amp;#123; id: 2, name: &quot;请假申请&quot;, pid: 1 &amp;#125;,  &amp;#123; id: 3, name: &quot;出差申请&quot;, pid: 1 &amp;#125">
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目中遇到的递归">
 <meta property="og:url" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;2019&#x2F;10&#x2F;29&#x2F;%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%80%92%E5%BD%92&#x2F;index.html">
 <meta property="og:site_name" content="麻柠的Blog">
-<meta property="og:description" content="热爱生活，不断学习">
+<meta property="og:description" content="1. 输出josn树形结构数组 根据一维数组中的parentId，输出josn树形结构数组  12345678910let list = [  &amp;#123; id: 1, name: &quot;办公管理&quot;, pid: 0 &amp;#125;,  &amp;#123; id: 2, name: &quot;请假申请&quot;, pid: 1 &amp;#125;,  &amp;#123; id: 3, name: &quot;出差申请&quot;, pid: 1 &amp;#125">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-01T12:43:30.330Z">
+<meta property="og:updated_time" content="2019-11-11T13:37:53.090Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -340,7 +340,17 @@
       
 
       
-        
+        <h3 id="1-输出josn树形结构数组"><a href="#1-输出josn树形结构数组" class="headerlink" title="1. 输出josn树形结构数组"></a>1. 输出josn树形结构数组</h3><blockquote>
+<p>根据一维数组中的parentId，输出josn树形结构数组</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">"办公管理"</span>, <span class="attr">pid</span>: <span class="number">0</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">"请假申请"</span>, <span class="attr">pid</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">"出差申请"</span>, <span class="attr">pid</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">4</span>, <span class="attr">name</span>: <span class="string">"请假记录"</span>, <span class="attr">pid</span>: <span class="number">2</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">5</span>, <span class="attr">name</span>: <span class="string">"系统设置"</span>, <span class="attr">pid</span>: <span class="number">0</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">6</span>, <span class="attr">name</span>: <span class="string">"权限管理"</span>, <span class="attr">pid</span>: <span class="number">5</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">7</span>, <span class="attr">name</span>: <span class="string">"用户角色"</span>, <span class="attr">pid</span>: <span class="number">6</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">8</span>, <span class="attr">name</span>: <span class="string">"菜单设置"</span>, <span class="attr">pid</span>: <span class="number">6</span> &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getJsonTree</span> (<span class="params">arr, parentId</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> data = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> node = arr[i]</span><br><span class="line">    <span class="keyword">if</span> (node.pid === parentId) &#123;</span><br><span class="line">      node.children = getJsonTree(arr, node.id)</span><br><span class="line">       data.push(node)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> data</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-josn树形结构数组转化为一维数组"><a href="#2-josn树形结构数组转化为一维数组" class="headerlink" title="2. josn树形结构数组转化为一维数组"></a>2. josn树形结构数组转化为一维数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> treeNodes = [</span><br><span class="line">    &#123;</span><br><span class="line">     id: <span class="number">1</span>,</span><br><span class="line">     name: <span class="string">'1'</span>,</span><br><span class="line">     children: [</span><br><span class="line">       &#123;</span><br><span class="line">        id: <span class="number">11</span>,</span><br><span class="line">        name: <span class="string">'11'</span>,</span><br><span class="line">        children: [</span><br><span class="line">         &#123;</span><br><span class="line">          id: <span class="number">111</span>,</span><br><span class="line">          name: <span class="string">'111'</span>,</span><br><span class="line">          children:[]</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            id: <span class="number">112</span>,</span><br><span class="line">            name: <span class="string">'112'</span></span><br><span class="line">           &#125;</span><br><span class="line">          ]</span><br><span class="line">         &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">          id: <span class="number">12</span>,</span><br><span class="line">          name: <span class="string">'12'</span>,</span><br><span class="line">          children: []</span><br><span class="line">         &#125;</span><br><span class="line">         ],</span><br><span class="line">         users: []</span><br><span class="line">        &#125;,</span><br><span class="line">      ];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getId</span>(<span class="params">Array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">Array</span>.length; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">Array</span>[i].id) </span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>[i].children &amp;&amp; <span class="built_in">Array</span>[i].children.length) &#123;</span><br><span class="line">      getId(<span class="built_in">Array</span>[i].children)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -434,8 +444,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -499,6 +518,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-输出josn树形结构数组"><span class="nav-number">1.</span> <span class="nav-text">1. 输出josn树形结构数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-josn树形结构数组转化为一维数组"><span class="nav-number">2.</span> <span class="nav-text">2. josn树形结构数组转化为一维数组</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
