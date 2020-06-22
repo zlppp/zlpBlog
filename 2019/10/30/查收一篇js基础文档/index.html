@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="麻柠的Blog">
 <meta property="og:description" content="js基本数据类型：string，boolean，number，null，undefined，Object 判断js数据类型的方法：typeOf：除了null都能返回正确的数据类型 12345typeof null &#x2F;&#x2F; Objecttypeof [] &#x2F;&#x2F; Objecttypeof new Function() &#x2F;&#x2F; functionlet messagetypeof message &#x2F;&#x2F; 对于未">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-29T08:28:51.107Z">
+<meta property="og:updated_time" content="2020-05-08T06:51:39.255Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -407,10 +407,12 @@
 <blockquote>
 <p>this就是call和apply对应的第一个参数,如果不传值或者第一个值为null,undefined时this指向window<br>apply()方法接收两个参数：一个 是在其中运行函数的作用域，另一个是参数数组。其中，第二个参数可以是 Array 的实例，也可以是 arguments 对象<br>call()方法与 apply()方法的作用相同，它们的区别仅在于接收参数的方式不同。对于 call() 方法而言，第一个参数是 this 值没有变化，变化的是其余参数都直接传递给函数。换句话说，在使用 call()方法时，传递给函数的参数必须逐个列举出来<br>扩充函数赖以运行的作用域</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo.apply(<span class="string">'我是apply改变的this值'</span>);<span class="comment">//我是apply改变的this值</span></span><br><span class="line"> foo.call(<span class="string">'我是call改变的this值'</span>);<span class="comment">//我是call改变的this值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo.apply(<span class="string">'我是apply改变的this值'</span>);<span class="comment">//我是apply改变的this值</span></span><br><span class="line">foo.call(<span class="string">'我是call改变的this值'</span>);<span class="comment">//我是call改变的this值</span></span><br></pre></td></tr></table></figure>
 
 <p>节流</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> throttle = <span class="function"><span class="keyword">function</span>(<span class="params">func, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">        timer = setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            func.apply(<span class="keyword">this</span>, argments)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">        &#125;, delay)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>闭包：就是在一个函数a返回了一个函数b，函数b使用了函数a的变量，函数b就是闭包</p>
 
       
     </div>
@@ -450,6 +452,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/zlpBlog/2020/05/07/js%E5%8E%9F%E5%9E%8B%E5%88%B0%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="prev" title="js原型到原型链">
+                js原型到原型链 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -530,7 +536,7 @@
               
                 <a href="/zlpBlog/archives">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -610,7 +616,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
