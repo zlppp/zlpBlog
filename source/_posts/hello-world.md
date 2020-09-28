@@ -1,38 +1,23 @@
 ---
 title: Hello World
+date: 2019-10-28 21:17:05
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+**Hello Word : )**
+**hexo博客搭建**
 
-## Quick Start
+``` // 新建文章
+hexo new ```
 
-### Create a new post
+``` // 生成静态网页
+hexo generate ```
 
-``` bash
-$ hexo new "My New Post"
-```
+``` // 启动本地服务
+hexo serve ```
 
-More info: [Writing](https://hexo.io/docs/writing.html)
+``` // 部署
+hexo deploy ```
 
-### Run server
+``` // 生成后部署 push到git
+hexo generate --deploy ```
 
-``` bash
-$ hexo server
-```
-
-More info: [Server](https://hexo.io/docs/server.html)
-
-### Generate static files
-
-``` bash
-$ hexo generate
-```
-
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/deployment.html)
+博客地址：https://zlppp.github.io/zlpBlog
