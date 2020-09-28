@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/zlpBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/zlpBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/zlpBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/zlpBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/zlpBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/zlpBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/zlpBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="js基本数据类型：string，boolean，number，null，undefined，Object 判断js数据类型的方法：typeOf：除了null都能返回正确的数据类型 12345typeof null &#x2F;&#x2F; Objecttypeof [] &#x2F;&#x2F; Objecttypeof new Function() &#x2F;&#x2F; functionlet messagetypeof message &#x2F;&#x2F; 对于未">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查收一篇js基础文章">
+<meta property="og:url" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;2019&#x2F;10&#x2F;30&#x2F;%E6%9F%A5%E6%94%B6%E4%B8%80%E7%AF%87js%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3&#x2F;index.html">
+<meta property="og:site_name" content="麻柠的Blog">
+<meta property="og:description" content="js基本数据类型：string，boolean，number，null，undefined，Object 判断js数据类型的方法：typeOf：除了null都能返回正确的数据类型 12345typeof null &#x2F;&#x2F; Objecttypeof [] &#x2F;&#x2F; Objecttypeof new Function() &#x2F;&#x2F; functionlet messagetypeof message &#x2F;&#x2F; 对于未">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-08T06:51:39.255Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/zlpBlog/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zlppp.github.io/2019/10/30/查收一篇js基础文档/"/>
+
+
+
+
+
+  <title>查收一篇js基础文章 | 麻柠的Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/zlpBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">麻柠的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学习笔记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/zlpBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/zlpBlog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/zlpBlog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/zlpBlog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zlppp.github.io/zlpBlog/2019/10/30/%E6%9F%A5%E6%94%B6%E4%B8%80%E7%AF%87js%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/zlpBlog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="麻柠的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">查收一篇js基础文章</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-30T17:57:03+08:00">
+                2019-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/zlpBlog/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>js基本数据类型：<strong>string，boolean，number，null，undefined，Object</strong></p>
+<p>判断js数据类型的方法：<br><strong>typeOf：</strong><br>除了null都能返回正确的数据类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">// Object</span></span><br><span class="line"><span class="keyword">typeof</span> [] <span class="comment">// Object</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Function</span>() <span class="comment">// function</span></span><br><span class="line"><span class="keyword">let</span> message</span><br><span class="line"><span class="keyword">typeof</span> message <span class="comment">// 对于未声明变量 返回 undefined</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>instanceof</strong>：用于测试构造函数的prototype属性是否出现在对象的原型链中的任何位置</p>
+<h3 id="js的浅拷贝与深拷贝："><a href="#js的浅拷贝与深拷贝：" class="headerlink" title="js的浅拷贝与深拷贝："></a>js的浅拷贝与深拷贝：</h3><p>首层深拷贝：Object.assign，concat ，slice，…运算符<br>深拷贝：JSON.parse(JSON.stringify())</p>
+<h3 id="数组的对象方法"><a href="#数组的对象方法" class="headerlink" title="数组的对象方法"></a>数组的对象方法</h3><table>
+    <tr>
+        <td>push()</td>
+        <td>在数组末尾添加，返回数组长度</td>
+    </tr>
+    <tr>
+        <td>  pop()</td>
+        <td>  删除数组末尾项，并返回被删除的值</td>
+      </tr>
+      <tr>
+        <td>  shift()</td>
+        <td>  删除数组头部元素，并返回删除的值</td>
+      </tr>
+ <tr>
+        <td>  unshift()</td>
+        <td>  向数组头部添加元素，并返回length</td>
+      </tr> <tr>
+        <td>    slice()</td>
+        <td>    返回数组指定元素</td>
+      </tr><tr>
+        <td>      sort()</td>
+        <td>      排序</td>
+      </tr><tr>
+        <td> join()</td>
+        <td>将数组放入字符串，并用指定分隔符分隔</td>
+      </tr>
+<tr>
+        <td>   concat()</td>
+        <td>  合并多个数组</td>
+      </tr>
+<tr>
+        <td>     splice()</td>
+        <td>    添加或删除数组中的项，返回被删除的项，会改变原数组</td>
+      </tr>
+      <tr>
+        <td>       indexOf()</td>
+        <td>      查找项在数组的索引</td>
+      </tr>
+<tr>
+        <td>         lastIndexOf()</td>
+        <td>        从后往前查找项的位置</td>
+      </tr><tr>
+        <td>           reverse()</td>
+        <td>          反转数组中元素的顺序</td>
+      </tr>
+
+</table>
+
+<p><strong>Array.prototype中的方法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">concat: ƒ concat()</span><br><span class="line"><span class="keyword">constructor</span>: ƒ Array()</span><br><span class="line">copyWithin: ƒ copyWithin()</span><br><span class="line">entries: ƒ entries()</span><br><span class="line">every: ƒ every()</span><br><span class="line">fill: ƒ fill()</span><br><span class="line">filter: ƒ filter()</span><br><span class="line">find: ƒ find()</span><br><span class="line">findIndex: ƒ findIndex()</span><br><span class="line">flat: ƒ flat()</span><br><span class="line">flatMap: ƒ flatMap()</span><br><span class="line">forEach: ƒ forEach()</span><br><span class="line">includes: ƒ includes()</span><br><span class="line">indexOf: ƒ indexOf()</span><br><span class="line">join: ƒ join()</span><br><span class="line">keys: ƒ keys()</span><br><span class="line">lastIndexOf: ƒ lastIndexOf()</span><br><span class="line">length: 0</span><br><span class="line">map: ƒ map()</span><br><span class="line">pop: ƒ pop()</span><br><span class="line">push: ƒ push()</span><br><span class="line">reduce: ƒ reduce()</span><br><span class="line">reduceRight: ƒ reduceRight()</span><br><span class="line">reverse: ƒ reverse()</span><br><span class="line">shift: ƒ shift()</span><br><span class="line">slice: ƒ slice()</span><br><span class="line">some: ƒ some()</span><br><span class="line">sort: ƒ sort()</span><br><span class="line">splice: ƒ splice()</span><br><span class="line">toLocaleString: ƒ toLocaleString()</span><br><span class="line">toString: ƒ toString()</span><br><span class="line">unshift: ƒ unshift()</span><br><span class="line">values: ƒ values()</span><br></pre></td></tr></table></figure>
+<h3 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h3><p>this 的值并不是由函数定义放在哪个对象里面决定，而是函数执行时由谁来唤起决定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.函数名和匿名函数，this指向window</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// window</span></span><br><span class="line">&#125;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// window</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> name= <span class="string">'blue'</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name) <span class="comment">// undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2.对象.方法名()  this指向对象</span></span><br><span class="line"><span class="keyword">var</span> ObjList = &#123;</span><br><span class="line">    name: <span class="string">'zlp'</span>,</span><br><span class="line">    getName: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// 指向ObjList对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 3.new 构造函数名(), this指向构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// this 指向构造函数Person</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> personOne = <span class="keyword">new</span> Person()</span><br></pre></td></tr></table></figure>
+
+
+<p>4.间接调用apply，call</p>
+<blockquote>
+<p>this就是call和apply对应的第一个参数,如果不传值或者第一个值为null,undefined时this指向window<br>apply()方法接收两个参数：一个 是在其中运行函数的作用域，另一个是参数数组。其中，第二个参数可以是 Array 的实例，也可以是 arguments 对象<br>call()方法与 apply()方法的作用相同，它们的区别仅在于接收参数的方式不同。对于 call() 方法而言，第一个参数是 this 值没有变化，变化的是其余参数都直接传递给函数。换句话说，在使用 call()方法时，传递给函数的参数必须逐个列举出来<br>扩充函数赖以运行的作用域</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo.apply(<span class="string">'我是apply改变的this值'</span>);<span class="comment">//我是apply改变的this值</span></span><br><span class="line">foo.call(<span class="string">'我是call改变的this值'</span>);<span class="comment">//我是call改变的this值</span></span><br></pre></td></tr></table></figure>
+
+<p>节流</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> throttle = <span class="function"><span class="keyword">function</span>(<span class="params">func, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">        timer = setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            func.apply(<span class="keyword">this</span>, argments)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">        &#125;, delay)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>闭包：就是在一个函数a返回了一个函数b，函数b使用了函数a的变量，函数b就是闭包</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/zlpBlog/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/zlpBlog/2019/10/29/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%80%92%E5%BD%92/" rel="next" title="项目中遇到的递归">
+                <i class="fa fa-chevron-left"></i> 项目中遇到的递归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/zlpBlog/2020/05/07/js%E5%8E%9F%E5%9E%8B%E5%88%B0%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="prev" title="js原型到原型链">
+                js原型到原型链 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/zlpBlog/images/avatar.jpg"
+                alt="zzz" />
+            
+              <p class="site-author-name" itemprop="name">zzz</p>
+              <p class="site-description motion-element" itemprop="description">热爱生活，不断学习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/zlpBlog/archives">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/zlpBlog/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/zlpBlog/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js的浅拷贝与深拷贝："><span class="nav-number">1.</span> <span class="nav-text">js的浅拷贝与深拷贝：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的对象方法"><span class="nav-number">2.</span> <span class="nav-text">数组的对象方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this的指向"><span class="nav-number">3.</span> <span class="nav-text">this的指向</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzz</span>
+
+  
+</div>
+
+
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/zlpBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/zlpBlog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/zlpBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/zlpBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
