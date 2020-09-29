@@ -1,5 +1,5 @@
 ---
-title: Hello World
+title: hexo
 date: 2019-10-28 21:17:05
 ---
 **Hello Word : )**
