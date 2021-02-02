@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/zlpBlog/2020/12/31/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" itemprop="url">一些vue自定义指令</a></h1>
+                <a class="post-title-link" href="/zlpBlog/2020/12/31/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" itemprop="url">【实用】整理常用的vue自定义指令</a></h1>
         
 
         <div class="post-meta">
@@ -321,9 +321,13 @@
       
         
           
-          给图片添加水印示例
+          自定义指令参数详解：
+bind：只调用一次，指令第一次绑定到元素时调用，可以定义一个在绑定时执行一次的初始化动作
 
-12&lt;img v-watermark="waterInfoRight" src="https://test-fshows-public.oss-cn-hangzhou.aliyuncs.com/college/admin/upload/2020-11-21/NTtcZ5n
+
+inserted：被绑定元素插入父节点时调用
+update：被绑定元素所在的模板更新时调用，但是可能发生在其子 VNode 更新之前
+componentUpdated：指令所在组件的
           ...
           <!--noindex-->
           <div class="post-button text-center">
