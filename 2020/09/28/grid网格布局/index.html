@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/zlpBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/zlpBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/zlpBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/zlpBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/zlpBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/zlpBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/zlpBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目前css布局方案中，网格布局可以算是最强大的布局方案了。flex与grid的区别：flex：可以看成 一维布局，容器存在两根轴：水平主轴和垂直交叉轴grid：二维网格布局，将容器分成多个网格，可以更好的操作行和列，更加灵活 grid并不能代替flex，两者一起用才更加强大  阮一峰的博客中grid的属性已经写得详细了http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2019&#x2F;03&#x2F;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="grid网格布局">
+<meta property="og:url" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;2020&#x2F;09&#x2F;28&#x2F;grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80&#x2F;index.html">
+<meta property="og:site_name" content="麻柠的Blog">
+<meta property="og:description" content="目前css布局方案中，网格布局可以算是最强大的布局方案了。flex与grid的区别：flex：可以看成 一维布局，容器存在两根轴：水平主轴和垂直交叉轴grid：二维网格布局，将容器分成多个网格，可以更好的操作行和列，更加灵活 grid并不能代替flex，两者一起用才更加强大  阮一峰的博客中grid的属性已经写得详细了http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2019&#x2F;03&#x2F;g">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;images&#x2F;grid&#x2F;grid1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;images&#x2F;grid&#x2F;grid2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;images&#x2F;grid&#x2F;grid3.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;images&#x2F;grid&#x2F;grid3.png">
+<meta property="og:updated_time" content="2020-09-28T12:36:41.613Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;zlppp.github.io&#x2F;zlpBlog&#x2F;images&#x2F;grid&#x2F;grid1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/zlpBlog/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zlppp.github.io/2020/09/28/grid网格布局/"/>
+
+
+
+
+
+  <title>grid网格布局 | 麻柠的Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/zlpBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">麻柠的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学习笔记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/zlpBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/zlpBlog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/zlpBlog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/zlpBlog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zlppp.github.io/zlpBlog/2020/09/28/grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zzz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/zlpBlog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="麻柠的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">grid网格布局</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-28T20:16:12+08:00">
+                2020-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>目前css布局方案中，网格布局可以算是最强大的布局方案了。<br>flex与grid的区别：<br>flex：可以看成 一维布局，容器存在两根轴：水平主轴和垂直交叉轴<br>grid：二维网格布局，将容器分成多个网格，可以更好的操作行和列，更加灵活</p>
+<p><strong>grid并不能代替flex，两者一起用才更加强大</strong></p>
+<blockquote>
+<p>阮一峰的博客中grid的属性已经写得详细了<br><a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html</a></p>
+</blockquote>
+<p>容器的主要属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">display: grid | inline-grid | subgrid <span class="comment">// 将容器设置为grid布局，行内grid</span></span><br><span class="line">grid-template-columns: <span class="number">100</span>px <span class="number">100</span>px     <span class="comment">// 创建网格列数(创建了两个100px的)</span></span><br><span class="line">grid-template-row: <span class="comment">// 创建网格行数</span></span><br><span class="line">grid-gap: <span class="comment">// 行和列的间隙</span></span><br><span class="line">justify-items: start | end | center | stretch <span class="comment">// 设置单元格内容水平位置</span></span><br><span class="line">align-items: start | end | center | stretch <span class="comment">// 设置单元格内容垂直位置</span></span><br></pre></td></tr></table></figure>
+<h2 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h2><h3 id="两栏布局"><a href="#两栏布局" class="headerlink" title="两栏布局"></a>两栏布局</h3><p><img src="/zlpBlog/images/grid/grid1.png" alt></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"container"</span>&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"item"</span>&gt;left&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div class="item"&gt;right&lt;/</span>div&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"item"</span>&gt;left&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div class="item"&gt;right&lt;/</span>div&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"item"</span>&gt;left&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div class="item"&gt;right&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">#container&#123;</span></span><br><span class="line"><span class="regexp">  display: grid;</span></span><br><span class="line"><span class="regexp">  grid-template-columns: 100px 100%; </span></span><br><span class="line"><span class="regexp">  grid-template-rows: 50px 60px 70px;</span></span><br><span class="line"><span class="regexp">  grid-gap: 10px;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三明治布局"><a href="#三明治布局" class="headerlink" title="三明治布局"></a>三明治布局</h3><p><img src="/zlpBlog/images/grid/grid2.png" alt></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#container&#123;</span><br><span class="line">  display: grid;</span><br><span class="line">  grid-template-rows: <span class="number">100</span>px <span class="number">100</span>% <span class="number">100</span>px;</span><br><span class="line">  grid-gap: <span class="number">10</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h3><p><img src="/zlpBlog/images/grid/grid3.png" alt></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#container&#123;</span><br><span class="line">  display: grid;</span><br><span class="line">  grid-template-rows: repeat(<span class="number">3</span>, <span class="number">100</span>px); <span class="comment">// repeat(): 简化重复的值，等同于grid-template-rows: 100px 100px 100px</span></span><br><span class="line">  grid-gap: <span class="number">10</span>px <span class="comment">// 行与行的间隔</span></span><br><span class="line">&#125;</span><br><span class="line">.item<span class="number">-1</span> &#123;</span><br><span class="line">  grid-column: <span class="number">1</span>/<span class="number">4</span> </span><br><span class="line">&#125;</span><br><span class="line">.item<span class="number">-5</span> &#123;</span><br><span class="line">  grid-column: <span class="number">1</span>/<span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line">.item &#123;</span><br><span class="line">  background: #eee;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="from表单"><a href="#from表单" class="headerlink" title="from表单"></a>from表单</h3><p><img src="/zlpBlog/images/grid/grid3.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#container&#123;</span><br><span class="line">  display: grid;</span><br><span class="line">  grid-template-columns: 3fr 2fr; // 将网格分成两份，左边占5/3, 右边占5/2</span><br><span class="line">  grid-gap: 10px; // 网格间距为10px</span><br><span class="line">&#125;</span><br><span class="line">.form &#123;</span><br><span class="line">  display: grid;</span><br><span class="line">  grid-gap: 10px;</span><br><span class="line">  grid-template-columns: 1fr 2fr; // 再将左边网格分成两栏</span><br><span class="line"> text-align: right;</span><br><span class="line">&#125;</span><br><span class="line">.button &#123;</span><br><span class="line">  grid-column: 1/3; // 按钮从第一条网格线开始  第三条网格线结束</span><br><span class="line">  justify-self: end; // 水平居右对齐</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/zlpBlog/2020/06/22/%E5%B0%8F%E7%A8%8B%E5%BA%8Fdemo/" rel="next" title="小程序demo">
+                <i class="fa fa-chevron-left"></i> 小程序demo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/zlpBlog/2020/12/31/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" rel="prev" title="【实用】整理常用的vue自定义指令">
+                【实用】整理常用的vue自定义指令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/zlpBlog/images/avatar.jpg"
+                alt="zzz" />
+            
+              <p class="site-author-name" itemprop="name">zzz</p>
+              <p class="site-description motion-element" itemprop="description">热爱生活，不断学习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/zlpBlog/archives">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/zlpBlog/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/zlpBlog/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实际应用"><span class="nav-number">1.</span> <span class="nav-text">实际应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两栏布局"><span class="nav-number">1.1.</span> <span class="nav-text">两栏布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三明治布局"><span class="nav-number">1.2.</span> <span class="nav-text">三明治布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圣杯布局"><span class="nav-number">1.3.</span> <span class="nav-text">圣杯布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from表单"><span class="nav-number">1.4.</span> <span class="nav-text">from表单</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzz</span>
+
+  
+</div>
+
+
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/zlpBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/zlpBlog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/zlpBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/zlpBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
