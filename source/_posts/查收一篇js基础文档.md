@@ -25,6 +25,21 @@ typeof message // 对于未声明变量 返回 undefined```
 ### js的浅拷贝与深拷贝： ###
 首层深拷贝：Object.assign，concat ，slice，...运算符
 深拷贝：JSON.parse(JSON.stringify())
+递归深拷贝：
+```javascript
+function deepClone(obj = {}) {
+  if (obj !== 'object' || obj == null) {
+    return obj
+  }
+  let result = obj instanceof Array ? [] : {}
+  for (key in obj) {
+    if (obj.hasOwnProtety(key)) {
+      result[key] = deepClone(obj[key])
+    }
+  }
+  return result
+}
+```
 
 ### 数组的对象方法 ###
 <table>
@@ -121,7 +136,7 @@ function getName () {
 }
 (function () {
     console.log(this) // window
-})
+})()
 var getName = function() {
     let name= 'blue'
     console.log(this.name) // undefined
@@ -173,4 +188,20 @@ let throttle = function(func, delay) {
 }```
 
 闭包：就是在一个函数a返回了一个函数b，函数b使用了函数a的变量，函数b就是闭包
-
+优点：能在函数中访问另一个函数的变量
+缺点：该变量存储在内存中，不会被销毁，所以会影响性能，不能滥用闭包，避免造成性能问题
+应用场景：
+```javascript
+let obj = {}
+function fn() {
+  return {
+    set: function (name, value) {
+      obj[name] = value
+    }
+    get: function (name) {
+      return obj[name]
+    }
+  }
+  
+}
+```
