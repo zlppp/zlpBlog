@@ -1,37 +1,806 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/zlpBlog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/zlpBlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/zlpBlog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/zlpBlog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/zlpBlog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/zlpBlog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/zlpBlog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、ts的主要数据类型布尔类型数字类型字符串类型数组类型 &#x2F;&#x2F; 在数组类型后面加上[]123let arr:number[] &#x3D; [1, 2]&#x2F;&#x2F; 使用数组泛型let arr:Array&lt;number&gt; &#x3D; [1, 2]  元祖：用来表示已知元素数量和类型的数组，各元素的类型不必相同，对应位置的类型需要相同（数组的一种） 1234let x: [string, number]x &#x3D; [">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】TypeScript学习笔记">
+<meta property="og:url" content="https://zlppp.github.io/2020/12/14/ts%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="麻柠的Blog">
+<meta property="og:description" content="1、ts的主要数据类型布尔类型数字类型字符串类型数组类型 &#x2F;&#x2F; 在数组类型后面加上[]123let arr:number[] &#x3D; [1, 2]&#x2F;&#x2F; 使用数组泛型let arr:Array&lt;number&gt; &#x3D; [1, 2]  元祖：用来表示已知元素数量和类型的数组，各元素的类型不必相同，对应位置的类型需要相同（数组的一种） 1234let x: [string, number]x &#x3D; [">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-12-14T13:23:43.000Z">
+<meta property="article:modified_time" content="2021-04-09T02:22:41.411Z">
+<meta property="article:author" content="zzz">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zlppp.github.io/2020/12/14/ts学习笔记/"/>
+
+
+
+
+
+  <title>【笔记】TypeScript学习笔记 | 麻柠的Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/zlpBlog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">麻柠的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学习笔记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/zlpBlog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/zlpBlog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/zlpBlog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/zlpBlog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zlppp.github.io/zlpBlog/2020/12/14/ts%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/zlpBlog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="麻柠的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【笔记】TypeScript学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-14T21:23:43+08:00">
+                2020-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、ts的主要数据类型"><a href="#1、ts的主要数据类型" class="headerlink" title="1、ts的主要数据类型"></a>1、ts的主要数据类型</h2><p>布尔类型<br>数字类型<br>字符串类型<br>数组类型</p>
+<figure class="highlight javascript"><figcaption><span>// 在数组类型后面加上[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr:number[] = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="comment">// 使用数组泛型</span></span><br><span class="line"><span class="keyword">let</span> arr:<span class="built_in">Array</span>&lt;number&gt; = [<span class="number">1</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<p>元祖：用来表示已知元素数量和类型的数组，各元素的类型不必相同，对应位置的类型需要相同（数组的一种）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x: [string, number]</span><br><span class="line">x = [<span class="string">&#x27;Runoob&#x27;</span>, <span class="number">1</span>]</span><br><span class="line">x = [<span class="number">1</span>, <span class="string">&#x27;Runoob&#x27;</span>]</span><br><span class="line"><span class="built_in">console</span>.log(x[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<p>enum：枚举</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">enum Color &#123;Red, Green = <span class="number">2</span>, Blue&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Blue <span class="comment">// 2</span></span><br><span class="line">Color.Red <span class="comment">// 0 没有赋值时 为索引值</span></span><br><span class="line">Color.Blue <span class="comment">// 3  </span></span><br></pre></td></tr></table></figure>
+
+<p>any：任意类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x:any = <span class="number">1</span></span><br><span class="line">x = <span class="string">&#x27;string&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>null 和 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num:number</span><br><span class="line"><span class="built_in">console</span>.log(num) <span class="comment">// 报错</span></span><br><span class="line"><span class="keyword">let</span> num:number | <span class="literal">undefined</span> <span class="comment">// 指定类型为number或者undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>void: 用于表示方法返回值的类型，一般用于定义方法的时候方法没有返回值<br>声明一个void类型的变量没有什么大用，因为你只能为它赋予undefined和null</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> unusable:<span class="keyword">void</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>):<span class="title">void</span> </span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;hello, runoob&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>):<span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">123</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>never类型：是其他类型（包括null和undefined） 从来不会出现的值，不太用到，一般可用any代替</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a:never</span><br><span class="line">a = (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;错误&#x27;</span>)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="2、ts中的函数"><a href="#2、ts中的函数" class="headerlink" title="2、ts中的函数"></a>2、ts中的函数</h2><h3 id="2-1定义函数的方法"><a href="#2-1定义函数的方法" class="headerlink" title="2.1定义函数的方法"></a>2.1定义函数的方法</h3><p>函数声明方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>):<span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;run&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>匿名函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>):<span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">123</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义方法传参</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">name:string, age:number</span>):<span class="title">string</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $&#123;name&#125;$&#123;age&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可选参数，在参数后加个?(可选参数必选配置到参数的最后)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params">name:string, age?:number</span>):<span class="title">string</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>默认参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun3</span>(<span class="params">name:string, age:number=<span class="number">20</span></span>):<span class="title">string</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>剩余参数 …</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a:number, b:number, ...result:number[]</span>):<span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> s = a+b</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; result.length; i++) &#123;</span><br><span class="line">    s += result[i]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s</span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+<p>函数重载：同名的函数，传入不同的参数，实现不同的结果（es5没有重载，会直接替换相同函数）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params">name:string</span>):<span class="title">void</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params">age:number</span>):<span class="title">void</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInfo</span>(<span class="params">str:any</span>):<span class="title">void</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> str == <span class="string">&quot;string&quot;</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;名字:&quot;</span>,str)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> str == <span class="string">&quot;number&quot;</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;年龄&quot;</span>,str)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">getInfo(<span class="string">&quot;zhangsan&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p>es5 类和静态方法  继承  （p5  要多看几遍）</p>
+<h3 id="3、ts中的类"><a href="#3、ts中的类" class="headerlink" title="3、ts中的类"></a>3、ts中的类</h3><h2 id="3-1-ts中定义类"><a href="#3-1-ts中定义类" class="headerlink" title="3.1 ts中定义类"></a>3.1 ts中定义类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  name:string;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">n:string</span>)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.name = n</span><br><span class="line">  &#125;</span><br><span class="line">  getName():string &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.name</span><br><span class="line">  &#125;</span><br><span class="line">  setName(n:string):<span class="keyword">void</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.name = n</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;zhangsan&#x27;</span>)</span><br><span class="line">p.setName(<span class="string">&#x27;李四&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p.getName())</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2、ts中实现继承-关键字-extends-super"><a href="#3-2、ts中实现继承-关键字-extends-super" class="headerlink" title="3.2、ts中实现继承 关键字 extends super"></a>3.2、ts中实现继承 关键字 extends super</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Work</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name:string</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(name) <span class="comment">/** 初始化父类的构造函数 **/</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> w = <span class="keyword">new</span> Work(<span class="string">&#x27;zhangsan&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(w.getName())</span><br></pre></td></tr></table></figure>
+
+<p>** <em>当子类和父类有相同方法时，调通该子类的方法，会先去找子类中的方法，再去找父类里找*</em></p>
+<h2 id="3-3-类里的修饰符"><a href="#3-3-类里的修饰符" class="headerlink" title="3.3 类里的修饰符"></a>3.3 类里的修饰符</h2><p>ts在定义属性时，提供了三种修饰符<br>public: 公有，在当前类里面、子类、类外面都可访问<br>protected：保护类型；在当前类里面、子类可访问，类外面不可访问<br>private：私有，在当前类里面可以访问，子类、类外面都不可访问<br>属性不加修饰符，默认public</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  public/private/private name:string;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name:string</span>)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.name = name</span><br><span class="line">  &#125;</span><br><span class="line">  run ():string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>在运动`</span> <span class="comment">// 在类里访问</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 继承 */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Work</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name:string</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(name)</span><br><span class="line">  &#125;</span><br><span class="line">  work ():string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>在工作`</span> <span class="comment">// 在子类里访问属性</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;张三&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p.name) <span class="comment">// 在外部访问</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-类中的静态属性-静态方法"><a href="#3-4-类中的静态属性-静态方法" class="headerlink" title="3.4 类中的静态属性 静态方法"></a>3.4 类中的静态属性 静态方法</h3><p>es5中的静态方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.run1=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125; <span class="comment">// 实例方法</span></span><br><span class="line">&#125;</span><br><span class="line">Person.run2 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125; <span class="comment">// 静态方法</span></span><br><span class="line">Person.name = <span class="string">&#x27;hhhh&#x27;</span> <span class="comment">// 静态属性</span></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person()</span><br><span class="line">p.run1() <span class="comment">// 调用实例方法</span></span><br><span class="line">Person.run2() <span class="comment">// 静态方法的调用</span></span><br></pre></td></tr></table></figure>
+
+
+<p>接口<br>ts中自定义方法传入参数对json的约束</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printLabel</span>(<span class="params">labelInfo:&#123;label:string&#125;</span>):<span class="title">void</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">printLable(&#123;<span class="attr">label</span>: <span class="string">&#x27;aaa&#x27;</span>&#125;) <span class="comment">// 必须要传入有label的对象，且label为string类型</span></span><br></pre></td></tr></table></figure>
+
+<p>属性类接口<br>对传入的批量方法进行约束<br>接口，对行为和动作的规范，对批量方法进行约束</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">interface FullName &#123; <span class="comment">// 定义接口</span></span><br><span class="line">  firstName:string; <span class="comment">// 分号</span></span><br><span class="line">  secondName:string</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printName</span> (<span class="params">name:FullName</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name.firstName + name.secondName)</span><br><span class="line">&#125;</span><br><span class="line">printName(&#123;<span class="attr">firstName</span>: <span class="string">&#x27;23&#x27;</span>, <span class="attr">secondName</span>: <span class="string">&#x27;323&#x27;</span>&#125;) <span class="comment">// 必须传入只包含firstName 和 secondName字段的对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    age: <span class="number">10</span>,</span><br><span class="line">    firstName: <span class="string">&#x27;23&#x27;</span>,</span><br><span class="line">    secondName: <span class="string">&#x27;323&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">printName(obj) <span class="comment">// 这样写 可以传入别的值 （用字面量  绕开检查机制？）</span></span><br><span class="line"></span><br><span class="line">interface FullName &#123;</span><br><span class="line">  firstName:string; </span><br><span class="line">  secondName?:string <span class="comment">// 可选属性  方法里可不传这个参数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>函数类接口：对传入的参数和返回的参数进行约束，也可以批量约束</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface a&#123;</span><br><span class="line">    (key:string, <span class="attr">value</span>:string):string</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> md5:a = <span class="function"><span class="keyword">function</span>(<span class="params">key:string,value:string</span>):<span class="title">string</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line">md(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;zhangsan&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可索引接口：数组\对象的约束（不常用）<br>第一种写法:对数组的约束</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface userArr&#123;</span><br><span class="line">    [index:number]:string</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr:userArr = [<span class="string">&#x27;aaa&#x27;</span>, <span class="string">&#x27;bbb&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>对对象的约束（更不常用）</p>
+<p>类类型接口：对类的约束（抽象类）常用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface Animal &#123;</span><br><span class="line">    name:string;</span><br><span class="line">    eat(str:string):<span class="keyword">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="title">imlement</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    name:sring;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name:string</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="title">eat</span>(<span class="params">food:string</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name+<span class="built_in">this</span>.food)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> d = <span class="keyword">new</span> Dog(<span class="string">&#x27;小黑&#x27;</span>)</span><br><span class="line">d.eat(<span class="string">&#x27;吃骨头&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>对批量方法进行约束</p>
+<p>泛型<br>可以支持不特定的数据类型，要求传入参数和返回参数一致<br>通俗理解：泛型是解决类 接口 方法的复用性，以及对不特定数据类型的支持<br>T 表示泛型</p>
+<p>*传入什么类型返回什么类型<br>不用泛型：需要写多个函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>(<span class="params">arg:number</span>):<span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ary</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用any实现，使用any就放弃了类型检查，any可以接受任何类型的参数，丢失了一些信息<br>应该传入什么类型返回什么类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>(<span class="params">arg:any</span>):<span class="title">any</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用泛型：给identityt添加了类型变量T，T帮我们捕获了传入的类型，之后我们可以使用这个类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg:T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 两种方法使用</span></span><br><span class="line">identity&lt;number&gt;(<span class="number">122</span>) <span class="comment">// 复杂情况下需要明确传入T的类型</span></span><br><span class="line">identity(<span class="number">111</span>) <span class="comment">// 更普遍 ；类型推论--编译器帮助我们确定T的类型</span></span><br></pre></td></tr></table></figure>
+
+<p>泛型类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericNumber</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    zeroValue: T;</span><br><span class="line">    add: <span class="function">(<span class="params">x: T, y: T</span>) =&gt;</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myGenericNumber = <span class="keyword">new</span> GenericNumber&lt;number&gt;();</span><br><span class="line">myGenericNumber.zeroValue = <span class="number">0</span>;</span><br><span class="line">myGenericNumber.add = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>ts中的模块<br> “内部模块”现在称做“命名空间”。 “外部模块”现在则简称为“模块”<br>与es6差不多<br>export  导出声明<br>export 导出语句<br>export default<br>import 导入模块</p>
+<p>命名空间<br>在代码量较大的情况下，为了避免命名冲突，可将相似功能的函数、接口、类等放置到命名空间内<br>Typescript的命名空间，可将代码包裹起来，只对外暴露需要在外部访问的对象，命名空间内的对象可用export暴露，命名空间是唯一的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">namespace A &#123;</span><br><span class="line">    interface Animal &#123;</span><br><span class="line">    	name: string;</span><br><span class="line">     	eat(): <span class="keyword">void</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="title">implements</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">     	name: string;</span><br><span class="line">      	<span class="function"><span class="title">constructor</span>(<span class="params">theName: string</span>)</span> &#123;</span><br><span class="line">           	<span class="built_in">this</span>.name = theName       </span><br><span class="line">      	&#125;</span><br><span class="line">       	eat () &#123;</span><br><span class="line">                    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>命名空间和模块的区别：<br>命名空间：内部模块，主要用于组织代码，避免命名冲突<br>模块：ts的外部模块简称，侧重代码的复用，一个模块里可能会有多个命名空间</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/zlpBlog/2020/09/28/grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/" rel="next" title="grid网格布局">
+                <i class="fa fa-chevron-left"></i> grid网格布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/zlpBlog/2021/02/10/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" rel="prev" title="【实用】整理常用的vue自定义指令">
+                【实用】整理常用的vue自定义指令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/zlpBlog/images/avatar.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/zlpBlog/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/zlpBlog/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/zlpBlog/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81ts%E7%9A%84%E4%B8%BB%E8%A6%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">1、ts的主要数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81ts%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">2、ts中的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">2.1定义函数的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81ts%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">3、ts中的类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-ts%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">3.1 ts中定义类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E3%80%81ts%E4%B8%AD%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF-%E5%85%B3%E9%94%AE%E5%AD%97-extends-super"><span class="nav-number">4.</span> <span class="nav-text">3.2、ts中实现继承 关键字 extends super</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E7%B1%BB%E9%87%8C%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">5.</span> <span class="nav-text">3.3 类里的修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E7%B1%BB%E4%B8%AD%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">3.4 类中的静态属性 静态方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzz</span>
+
+  
+</div>
+
+
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/zlpBlog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/zlpBlog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/zlpBlog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/zlpBlog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/zlpBlog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/zlpBlog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
