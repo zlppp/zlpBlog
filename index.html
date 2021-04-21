@@ -321,20 +321,12 @@
 
       
         
-          
-          第三章 基本概念3.4数据类型
-3.4.1 typeof操作符
-
-‘undefined’  这个值未定义
-‘boolean’  这个值是布尔类型
-‘number’ 这个值是数字类型
-‘string’  这个值是字符串类型
-‘object’  这个值是对象或者null
-‘function’ 函数
-
-
-
-          ...
+          <h2 id="第三章-基本概念"><a href="#第三章-基本概念" class="headerlink" title="第三章 基本概念"></a>第三章 基本概念</h2><h3 id="3-4数据类型"><a href="#3-4数据类型" class="headerlink" title="3.4数据类型"></a>3.4数据类型</h3><ul>
+<li><p>3.4.1 typeof操作符</p>
+<ul>
+<li>‘undefined’  这个值未定义</li>
+<li>‘boolean’  这个值是布尔类型</li>
+<li>‘number’ 这个值是数字类型</li></ul></li></ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2021/04/09/%E9%87%8D%E8%AF%BB%E3%80%8Ajavascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/#more" rel="contents">
@@ -458,10 +450,8 @@
 
       
         
-          
-          1、事件委托需求：动态加载菜品，点击+ -将商品加入购物车思路：使用事件委托，在list上添加事件
-123$(&#39;.order-list&#39;).on(&#39;touchstart&#39;, &#39;.order-jia&#39;, function () &#123;  &#x2F
-          ...
+          <h3 id="1、事件委托"><a href="#1、事件委托" class="headerlink" title="1、事件委托"></a>1、事件委托</h3><p>需求：动态加载菜品，点击+ -将商品加入购物车<br>思路：使用事件委托，在list上添加事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&#39;.order-list&#39;).on(&#39;touchstart&#39;, &#39;.order-jia&#39;, function () &#123;</span><br><span class="line">  &#x2F;&#x2F; ..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2021/04/09/%E3%80%90%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%91%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%B0%8F%E9%9A%BE%E7%82%B9/#more" rel="contents">
@@ -585,15 +575,14 @@
 
       
         
-          
-          自定义指令参数详解：
-bind：只调用一次，指令第一次绑定到元素时调用，可以定义一个在绑定时执行一次的初始化动作
-
-
-inserted：被绑定元素插入父节点时调用
-update：被绑定元素所在的模板更新时调用，但是可能发生在其子 VNode 更新之前
-componentUpdated：指令所在组件的
-          ...
+          <h2 id="自定义指令参数详解："><a href="#自定义指令参数详解：" class="headerlink" title="自定义指令参数详解："></a>自定义指令参数详解：</h2><ul>
+<li>bind：只调用一次，指令第一次绑定到元素时调用，可以定义一个在绑定时执行一次的初始化动作</li>
+</ul>
+<ul>
+<li>inserted：被绑定元素插入父节点时调用</li>
+<li>update：被绑定元素所在的模板更新时调用，但是可能发生在其子 VNode 更新之前</li>
+<li>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用</li>
+<li>unbind：只调用一次，指令与元素解绑时调用</li></ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2021/02/10/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/#more" rel="contents">
@@ -717,12 +706,7 @@ componentUpdated：指令所在组件的
 
       
         
-          
-          1、ts的主要数据类型布尔类型数字类型字符串类型数组类型
-// 在数组类型后面加上[]123let arr:number[] = [1, 2]// 使用数组泛型let arr:Array&lt;number&gt; = [1, 2]
-
-元祖：用来表示已知元素数量和类型的数组，各元素的类型不必相同，对
-          ...
+          <h2 id="1、ts的主要数据类型"><a href="#1、ts的主要数据类型" class="headerlink" title="1、ts的主要数据类型"></a>1、ts的主要数据类型</h2><p>布尔类型<br>数字类型<br>字符串类型<br>数组类型</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2020/12/14/ts%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -846,12 +830,7 @@ componentUpdated：指令所在组件的
 
       
         
-          
-          目前css布局方案中，网格布局可以算是最强大的布局方案了。flex与grid的区别：flex：可以看成 一维布局，容器存在两根轴：水平主轴和垂直交叉轴grid：二维网格布局，将容器分成多个网格，可以更好的操作行和列，更加灵活
-grid并不能代替flex，两者一起用才更加强大
-
-阮一峰的博客中grid
-          ...
+          <p>目前css布局方案中，网格布局可以算是最强大的布局方案了。<br>flex与grid的区别：<br>flex：可以看成 一维布局，容器存在两根轴：水平主轴和垂直交叉轴<br>grid：二维网格布局，将容器分成多个网格，可以更好的操作行和列，更加灵活</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2020/09/28/grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/#more" rel="contents">
@@ -983,7 +962,7 @@ grid并不能代替flex，两者一起用才更加强大
 
 
 小程序截图预览
-  ![这是代替图片的文字，随便写](mina.gif)
+  
 
 
   
@@ -1148,12 +1127,8 @@ grid并不能代替flex，两者一起用才更加强大
 
       
         
-          
-          每个函数都有prototype
-1234function Person &#123;&#125;Person.prototype.name = &#x27;zzz&#x27;let p1 =  new Person()p1.name // zzz
-
-12345678910function Perso
-          ...
+          <p>每个函数都有prototype</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> </span>&#123;&#125;</span><br><span class="line">Person.prototype.name = <span class="string">&#x27;zzz&#x27;</span></span><br><span class="line"><span class="keyword">let</span> p1 =  <span class="keyword">new</span> Person()</span><br><span class="line">p1.name <span class="comment">// zzz</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2020/05/07/js%E5%8E%9F%E5%9E%8B%E5%88%B0%E5%8E%9F%E5%9E%8B%E9%93%BE/#more" rel="contents">
@@ -1299,11 +1274,8 @@ grid并不能代替flex，两者一起用才更加强大
 
       
         
-          
-          js基本数据类型：string，boolean，number，null，undefined，Object
-判断js数据类型的方法：typeOf：除了null都能返回正确的数据类型
-12345678910111213141516171819202122232425typeof null // Obje
-          ...
+          <p>js基本数据类型：<strong>string，boolean，number，null，undefined，Object</strong></p>
+<p>判断js数据类型的方法：<br><strong>typeOf：</strong><br>除了null都能返回正确的数据类型</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2019/10/30/%E6%9F%A5%E6%94%B6%E4%B8%80%E7%AF%87js%E5%9F%BA%E7%A1%80%E6%96%87%E6%A1%A3/#more" rel="contents">
@@ -1449,12 +1421,9 @@ grid并不能代替flex，两者一起用才更加强大
 
       
         
-          
-          1. 输出josn树形结构数组
-根据一维数组中的parentId，输出josn树形结构数组
-
-12345678910let list = [  &#123; id: 1, name: &quot;办公管理&quot;, pid: 0 &#125;,  &#123; id: 2, name: &quo
-          ...
+          <h3 id="1-输出josn树形结构数组"><a href="#1-输出josn树形结构数组" class="headerlink" title="1. 输出josn树形结构数组"></a>1. 输出josn树形结构数组</h3><blockquote>
+<p>根据一维数组中的parentId，输出josn树形结构数组</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2019/10/29/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%80%92%E5%BD%92/#more" rel="contents">
@@ -1600,14 +1569,10 @@ grid并不能代替flex，两者一起用才更加强大
 
       
         
-          
-          
-“这个页面你改了吗，怎么还是没变”“那你清一下缓存看看”
-
-在开发中我们经常会听到这样的对话那么浏览器缓存到底是什么  他又是如何对文档进行存储的呢
-什么是浏览器缓存简单来说，浏览器缓存就是将页面上的一些文件储存在本地磁盘中，以便下次再打开这个地址的时候快速加载页面，减少请求资源。
-用chrome
-          ...
+          <blockquote>
+<p>“这个页面你改了吗，怎么还是没变”<br>“那你清一下缓存看看”</p>
+</blockquote>
+<p>在开发中我们经常会听到这样的对话<br>那么浏览器缓存到底是什么  他又是如何对文档进行存储的呢</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/zlpBlog/2019/10/29/%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/#more" rel="contents">

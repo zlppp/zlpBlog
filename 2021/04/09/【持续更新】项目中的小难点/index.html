@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="1、事件委托需求：动态加载菜品，点击+ -将商品加入购物车思路：使用事件委托，在list上添加事件 123$(&#39;.order-list&#39;).on(&#39;touchstart&#39;, &#39;.order-jia&#39;, function () &amp;#123;  &#x2F;&#x2F; ..&amp;#125;  2、下载图片需求：点击图片链接，下载图片，默认为打开图片 123">
+<meta name="description" content="1、事件委托需求：动态加载菜品，点击+ -将商品加入购物车思路：使用事件委托，在list上添加事件 123$(&#39;.order-list&#39;).on(&#39;touchstart&#39;, &#39;.order-jia&#39;, function () &amp;#123;  &#x2F;&#x2F; ..&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【持续更新】项目知识点记录">
 <meta property="og:url" content="https://zlppp.github.io/2021/04/09/%E3%80%90%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%91%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%B0%8F%E9%9A%BE%E7%82%B9/index.html">
 <meta property="og:site_name" content="麻柠的Blog">
-<meta property="og:description" content="1、事件委托需求：动态加载菜品，点击+ -将商品加入购物车思路：使用事件委托，在list上添加事件 123$(&#39;.order-list&#39;).on(&#39;touchstart&#39;, &#39;.order-jia&#39;, function () &amp;#123;  &#x2F;&#x2F; ..&amp;#125;  2、下载图片需求：点击图片链接，下载图片，默认为打开图片 123">
+<meta property="og:description" content="1、事件委托需求：动态加载菜品，点击+ -将商品加入购物车思路：使用事件委托，在list上添加事件 123$(&#39;.order-list&#39;).on(&#39;touchstart&#39;, &#39;.order-jia&#39;, function () &amp;#123;  &#x2F;&#x2F; ..&amp;#125;">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-04-09T02:22:09.000Z">
-<meta property="article:modified_time" content="2021-04-21T06:33:30.966Z">
+<meta property="article:modified_time" content="2021-04-21T08:10:51.984Z">
 <meta property="article:author" content="zzz">
 <meta name="twitter:card" content="summary">
 
@@ -321,11 +321,12 @@
       
         <h3 id="1、事件委托"><a href="#1、事件委托" class="headerlink" title="1、事件委托"></a>1、事件委托</h3><p>需求：动态加载菜品，点击+ -将商品加入购物车<br>思路：使用事件委托，在list上添加事件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&#39;.order-list&#39;).on(&#39;touchstart&#39;, &#39;.order-jia&#39;, function () &#123;</span><br><span class="line">  &#x2F;&#x2F; ..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<span id="more"></span>
 <h3 id="2、下载图片"><a href="#2、下载图片" class="headerlink" title="2、下载图片"></a>2、下载图片</h3><p>需求：点击图片链接，下载图片，默认为打开图片</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">downloadImage (imgsrc, name) &#123; &#x2F;&#x2F; 下载图片地址和图片名</span><br><span class="line">  let image &#x3D; new Image()</span><br><span class="line">  &#x2F;&#x2F; 解决跨域 Canvas 污染问题</span><br><span class="line">  image.setAttribute(&#39;crossOrigin&#39;, &#39;anonymous&#39;)</span><br><span class="line">  image.onload &#x3D; function () &#123;</span><br><span class="line">    let canvas &#x3D; document.createElement(&#39;canvas&#39;)</span><br><span class="line">    canvas.width &#x3D; image.width</span><br><span class="line">    canvas.height &#x3D; image.height</span><br><span class="line">    let context &#x3D; canvas.getContext(&#39;2d&#39;)</span><br><span class="line">    context.drawImage(image, 0, 0, image.width, image.height)</span><br><span class="line">    let url &#x3D; canvas.toDataURL(&#39;image&#x2F;png&#39;) &#x2F;&#x2F; 得到图片的base64编码数据</span><br><span class="line">    let a &#x3D; document.createElement(&#39;a&#39;) &#x2F;&#x2F; 生成一个a元素</span><br><span class="line">    let event &#x3D; new MouseEvent(&#39;click&#39;) &#x2F;&#x2F; 创建一个单击事件</span><br><span class="line">    a.download &#x3D; name || &#39;pic&#39; &#x2F;&#x2F; 设置图片名称</span><br><span class="line">    a.href &#x3D; url &#x2F;&#x2F; 将生成的URL设置为a.href属性</span><br><span class="line">    a.dispatchEvent(event) &#x2F;&#x2F; 触发a的单击事件</span><br><span class="line">  &#125;</span><br><span class="line">  image.src &#x3D; imgsrc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3、代码优化"><a href="#3、代码优化" class="headerlink" title="3、代码优化"></a>3、代码优化</h3>
+
+
       
     </div>
     
@@ -497,7 +498,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="nav-number">1.</span> <span class="nav-text">1、事件委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87"><span class="nav-number">2.</span> <span class="nav-text">2、下载图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">3、代码优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="nav-number">1.</span> <span class="nav-text">1、事件委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87"><span class="nav-number">2.</span> <span class="nav-text">2、下载图片</span></a></li></ol></div>
             
 
           </div>

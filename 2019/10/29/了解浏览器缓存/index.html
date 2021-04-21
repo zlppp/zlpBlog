@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="“这个页面你改了吗，怎么还是没变”“那你清一下缓存看看”  在开发中我们经常会听到这样的对话那么浏览器缓存到底是什么  他又是如何对文档进行存储的呢 什么是浏览器缓存简单来说，浏览器缓存就是将页面上的一些文件储存在本地磁盘中，以便下次再打开这个地址的时候快速加载页面，减少请求资源。 用chrome打开我们的官网，查看network 刷新页面后，我们看到有些js，图片，css的size变成了for">
+<meta name="description" content="“这个页面你改了吗，怎么还是没变”“那你清一下缓存看看”  在开发中我们经常会听到这样的对话那么浏览器缓存到底是什么  他又是如何对文档进行存储的呢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【笔记】了解浏览器缓存">
 <meta property="og:url" content="https://zlppp.github.io/2019/10/29/%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="麻柠的Blog">
-<meta property="og:description" content="“这个页面你改了吗，怎么还是没变”“那你清一下缓存看看”  在开发中我们经常会听到这样的对话那么浏览器缓存到底是什么  他又是如何对文档进行存储的呢 什么是浏览器缓存简单来说，浏览器缓存就是将页面上的一些文件储存在本地磁盘中，以便下次再打开这个地址的时候快速加载页面，减少请求资源。 用chrome打开我们的官网，查看network 刷新页面后，我们看到有些js，图片，css的size变成了for">
+<meta property="og:description" content="“这个页面你改了吗，怎么还是没变”“那你清一下缓存看看”  在开发中我们经常会听到这样的对话那么浏览器缓存到底是什么  他又是如何对文档进行存储的呢">
 <meta property="og:locale">
 <meta property="og:image" content="https://zlppp.github.io/zlpBlog/2019/10/29/%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/cache1.png">
 <meta property="og:image" content="https://zlppp.github.io/zlpBlog/2019/10/29/%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/cache2.png">
@@ -96,7 +96,7 @@
 <meta property="og:image" content="https://zlppp.github.io/zlpBlog/2019/10/29/%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/cache8.png">
 <meta property="og:image" content="https://zlppp.github.io/zlpBlog/2019/10/29/%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/cache9.png">
 <meta property="article:published_time" content="2019-10-29T13:17:05.000Z">
-<meta property="article:modified_time" content="2021-04-21T06:48:02.748Z">
+<meta property="article:modified_time" content="2021-04-21T08:10:51.984Z">
 <meta property="article:author" content="zzz">
 <meta property="article:tag" content="缓存">
 <meta name="twitter:card" content="summary">
@@ -356,6 +356,7 @@
 <p>“这个页面你改了吗，怎么还是没变”<br>“那你清一下缓存看看”</p>
 </blockquote>
 <p>在开发中我们经常会听到这样的对话<br>那么浏览器缓存到底是什么  他又是如何对文档进行存储的呢</p>
+<span id="more"></span>
 <h2 id="什么是浏览器缓存"><a href="#什么是浏览器缓存" class="headerlink" title="什么是浏览器缓存"></a>什么是浏览器缓存</h2><p>简单来说，浏览器缓存就是将页面上的一些文件储存在本地磁盘中，以便下次再打开这个地址的时候快速加载页面，减少请求资源。</p>
 <p>用chrome打开我们的官网，查看network<br><img src="/zlpBlog/2019/10/29/%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/cache1.png"></p>
 <p>刷新页面后，我们看到有些js，图片，css的size变成了form memory cache，form disk cache 这又代表什么呢<br><img src="/zlpBlog/2019/10/29/%E4%BA%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/cache2.png"></p>
